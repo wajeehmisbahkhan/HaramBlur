@@ -48,7 +48,12 @@ const setStyle = ({ detail: settings }) => {
       transition: filter 0.1s ease !important;
       opacity: unset !important;
     }
-	
+    ${
+        shouldBlurVideos
+            ? // a scene change can't wait for a fade-in, so video blurs instantly
+              `video.hb-blur { transition: none !important; }`
+            : ""
+    }
   `;
     if (unblurSelectors) {
         hbStyleSheet.innerHTML += `

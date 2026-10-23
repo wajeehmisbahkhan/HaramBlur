@@ -38,7 +38,8 @@ const loadVideo = async (video) => {
 
     return await new Promise((resolve, reject) => {
         video.setAttribute("crossorigin", "anonymous");
-        if (video.readyState >= 3 && video.videoHeight) {
+        // HAVE_CURRENT_DATA is enough to draw a frame; waiting for more hangs on paused videos
+        if (video.readyState >= 2 && video.videoHeight) {
             resolve(true);
         }
         video.onloadeddata = () => {
