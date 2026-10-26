@@ -102,24 +102,3 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 
     return true;
 });
-
-// on install, onboarding
-chrome.runtime.onInstalled.addListener(function (details) {
-    if (details?.reason === "install") {
-        chrome.tabs.create({
-            url: "https://onboard.haramblur.com/",
-        });
-    } else if (details?.reason === "update") {
-        // const currentVersion = chrome.runtime.getManifest().version;
-        // if (currentVersion == "0.2.4" || currentVersion == "0.2.5") return; // no need to show update page for this version
-        // const previousVersion = details.previousVersion;
-        // if (currentVersion != previousVersion) {
-        // 	chrome.tabs.create({
-        // 		url: "https://update.haramblur.com/",
-        // 	});
-        // }
-    }
-});
-
-// on uninstall
-chrome.runtime.setUninstallURL("https://forms.gle/RovVrtp29vK3Z7To7");
